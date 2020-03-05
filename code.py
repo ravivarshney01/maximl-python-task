@@ -1,7 +1,7 @@
 from collections import defaultdict, Counter
 
-def myFun(stri):
-    p = ''.join(set(stri))
+def myFun(S):
+    p = ''.join(set(S))
     cou = Counter(p) 
     rq = len(cou)
     l = 0
@@ -11,22 +11,22 @@ def myFun(stri):
     mwl = float("inf")
     wl = None
     wl = None
-    while r < len(stri):
-        ud[stri[r]] = ud.get(stri[r], 0) + 1
-        if stri[r] in cou and ud[stri[r]] == cou[stri[r]]:
+    while r < len(S):
+        ud[S[r]] = ud.get(S[r], 0) + 1
+        if S[r] in cou and ud[S[r]] == cou[S[r]]:
             u += 1
         while l <= r and u == rq:
             if r - l + 1 < mwl:
                 mwl = r - l + 1
                 wl = l
                 wl = r
-            ud[stri[l]] -= 1
-            if stri[l] in cou and ud[stri[l]] < cou[stri[l]]:
+            ud[S[l]] -= 1
+            if S[l] in cou and ud[S[l]] < cou[S[l]]:
                 u -= 1
             l += 1
         r += 1
-    return "" if mwl == float("inf") else len(stri[wl: wl + 1])
+    return "" if mwl == float("inf") else len(S[wl: wl + 1])
 
-stri = input()
-result = myFun(stri)
+S = input()
+result = myFun(S)
 print (result)
